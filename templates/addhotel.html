@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Add Hotel</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="static/images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="static/vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="static/vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="static/css/l_util.css">
+	<link rel="stylesheet" type="text/css" href="static/css/l_main.css">
+<!--===============================================================================================-->
+
+	<script type="text/javascript"> 
+        function reset() {
+        	document.getElementById('frm').reset();
+        }
+    </script>
+</head>
+<body onload="reset();">
+
+	{% with messages = get_flashed_messages() %}
+  	{% if messages %}
+    <script>
+      var messages = {{ messages | safe }};
+      for (var i=0; i<messages.length; i++) {
+        alert(messages[i]);
+      }
+    </script>
+  	{% endif %}
+	{% endwith %}
+
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('static/images/bg-01.jpg');">
+			<div class="wrap-login100 p-l-110 p-r-110 p-t-62 p-b-33">
+				<form class="login100-form validate-form flex-sb flex-w" id="frm" action="http://localhost:5000/addhotel" method = 'POST' enctype="multipart/form-data">
+					<span class="login100-form-title p-b-53">
+						Add Your Hotel<br>
+					</span>
+
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							HotelName
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Hotelname is required">
+						<input class="input100" type="text" name="hotelname" required>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Address
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Address is required">
+						<input class="input100" type="text" name="address" required>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							City
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Hotelname is required">
+						<input class="input100" type="text" name="city" required>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Email
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Email is required">
+						<input class="input100" type="text" name="email" pattern="\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+" title="Please enter Valid EMAIL" required>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Mobile No
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Mobile No is required">
+						<input class="input100" type="text" name="mobile" pattern="[0-9]{10}" title="only contains Numbers" required>
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Price
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Price is required">
+						<input class="input100" type="text" name="price" pattern="[0-9]{3,}" title="only contains Numbers" required>
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Hotel Picture
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Hotel Picture is required">
+						<input type="file" name="pic" accept="image/*" required>
+					</div>
+
+					<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Wifi
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Wifi is required">
+						<select class="input100" style="border: none;outline: none;scroll-behavior: smooth;" data-trigger="" name="wifi">
+	              			<option placeholder="">Yes</option>
+				            <option>No</option>
+				        </select>
+			    	</div>
+
+			    	<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							AC
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "AC is required">
+						<select class="input100" style="border: none;outline: none;scroll-behavior: smooth;" data-trigger="" name="ac">
+	              			<option placeholder="">Yes</option>
+				            <option>No</option>
+				        </select>
+			    	</div>
+
+			    	<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Pool
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Pool is required">
+						<select class="input100" style="border: none;outline: none;scroll-behavior: smooth;" data-trigger="" name="pool">
+	              			<option placeholder="">Yes</option>
+				            <option>No</option>
+				        </select>
+			    	</div>
+
+			    	<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Spa
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Spa is required">
+						<select class="input100" style="border: none;outline: none;scroll-behavior: smooth;" data-trigger="" name="spa">
+	              			<option placeholder="">Yes</option>
+				            <option>No</option>
+				        </select>
+			    	</div>
+
+			    	<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Parking
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Parking is required">
+						<select class="input100" style="border: none;outline: none;scroll-behavior: smooth;" data-trigger="" name="parking">
+	              			<option placeholder="">Yes</option>
+				            <option>No</option>
+				        </select>
+			    	</div>
+
+			    	<div class="p-t-31 p-b-9">
+						<span class="txt1">
+							Restaurant
+						</span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate = "Restaurant is required">
+						<select class="input100" style="border: none;outline: none;scroll-behavior: smooth;" data-trigger="" name="restaurant">
+	              			<option placeholder="">Yes</option>
+				            <option>No</option>
+				        </select>
+			    	</div>
+
+					<div class="container-login100-form-btn m-t-17">
+						<button class="login100-form-btn" type = 'submit'>
+							ADD HOTEL
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div id="dropDownSelect1"></div>
+	
+<!--===============================================================================================-->
+	<script src="static/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/bootstrap/js/popper.js"></script>
+	<script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/daterangepicker/moment.min.js"></script>
+	<script src="static/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="static/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="static/js/l_main.js"></script>
+
+</body>
+</html>
